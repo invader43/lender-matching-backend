@@ -1,0 +1,18 @@
+[project]
+name = "lender-matching-backend"
+version = "0.1.0"
+description = "Backend for Lender Matching System"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "fastapi>=0.100.0",
+    "uvicorn[standard]>=0.20.0",
+    "sqlalchemy>=2.0.0",
+    "psycopg[binary]>=3.1.0",
+    "pydantic-settings>=2.0.0",
+    "asyncpg>=0.28.0"
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
