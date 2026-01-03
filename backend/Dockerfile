@@ -6,10 +6,21 @@ WORKDIR /app
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /bin/uv
 
 # Install dependencies directly without building package
-RUN uv pip install --system fastapi uvicorn[standard] sqlalchemy psycopg[binary] pydantic-settings asyncpg python-dotenv
+RUN uv pip install --system \
+    fastapi \
+    uvicorn[standard] \
+    sqlalchemy \
+    psycopg[binary] \
+    pydantic-settings \
+    asyncpg \
+    python-dotenv \
+    google-genai \
+    python-multipart \
+    aiofiles
 
 # Copy application code
 COPY . .
 
 # Run application
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+
