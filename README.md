@@ -26,6 +26,29 @@ An AI-powered lender matching system that uses **Gemini** to extract underwritin
 - **Real-time Updates** - Polls for async processing results
 
 ## 🚀 Quick Start
+The fastest way to get started is to use Docker Compose.
+## 🐳 Docker Deployment
+Create a `.env` file in the `root` directory.
+
+```env
+# Database Configuration
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=postgres
+POSTGRES_DB=lender_db
+DATABASE_URL=postgresql+psycopg://postgres:postgres@db:5432/lender_db
+
+# External APIs
+GOOGLE_API_KEY=<GEMINI_API_KEY>
+```
+```bash
+# Build and run with Docker Compose
+docker-compose up --build
+
+# The application will be available at:
+# - Frontend: http://localhost:80
+# - Backend: http://localhost:8000
+```
+
 
 ### Prerequisites
 
@@ -120,7 +143,7 @@ curl -X POST http://localhost:8000/lenders/{lender_id}/ingest-guidelines \
 ## 📁 Project Structure
 
 ```
-lender-matching-full/
+root/
 ├── backend/
 │   ├── models/              # SQLAlchemy models
 │   │   ├── parameter_definitions.py
@@ -165,7 +188,7 @@ lender-matching-full/
 
 ## 🔧 Configuration
 
-### Backend Environment Variables
+### Environment Variables
 
 Create a `.env` file in the `backend/` directory or use the settings in `docker-compose.yml`.
 
@@ -186,17 +209,6 @@ Create a `.env` file in the `frontend/` directory (or use `.env.local` for local
 
 ```env
 VITE_API_URL=http://localhost:8000
-```
-
-## 🐳 Docker Deployment
-
-```bash
-# Build and run with Docker Compose
-docker-compose up --build
-
-# The application will be available at:
-# - Frontend: http://localhost:80
-# - Backend: http://localhost:8000
 ```
 
 ## 🛠️ Technology Stack
